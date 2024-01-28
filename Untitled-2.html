@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Grid</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(50, 10px);
+            grid-template-rows: repeat(50, 10px);
+            gap: 1px;
+            width: 500px;
+            height: 500px;
+        }
+
+        .pixel {
+            width: 10px;
+            height: 10px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid" id="grid"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('grid');
+
+            // Create the grid
+            for (let i = 0; i < 50; i++) {
+                for (let j = 0; j < 50; j++) {
+                    const pixel = document.createElement('div');
+                    pixel.classList.add('pixel');
+                    pixel.dataset.row = i;
+                    pixel.dataset.col = j;
+                    grid.appendChild(pixel);
+                }
+            }
+
+            // Simulate purchasing a pixel (replace this with actual backend logic)
+            const purchasePixel = (row, col) => {
+                const pixel = document.querySelector(`.pixel[data-row="${row}"][data-col="${col}"]`);
+                pixel.style.backgroundColor = '#3498db'; // Change color to indicate purchase
+            };
+
+            // Add click event listener to pixels (replace with actual purchase logic)
+            grid.addEventListener('click', (event) => {
+                const pixel = event.target;
+                const row = pixel.dataset.row;
+                const col = pixel.dataset.col;
+                
+                // Simulate purchase (replace with actual purchase logic)
+                purchasePixel(row, col);
+            });
+        });
+    </script>
+</body>
+</html>
